@@ -91,7 +91,7 @@ final class Adapter implements AdapterInterface
             'priority' => $metadata['priority'] ?? 1024,
         ])->execute();
         $tableSchema = $this->db->getTableSchema($this->tableName);
-        $key = $tableSchema ? $this->db->getLastInsertID($tableSchema->getSequenceName()) : $tableSchema;
+        $key = $tableSchema ? $this->db->getLastInsertId($tableSchema->getSequenceName()) : $tableSchema;
 
         return new IdEnvelope($message, $key);
     }
@@ -191,6 +191,7 @@ final class Adapter implements AdapterInterface
                 $this->tableName,
                 ['reserved_at' => null],
                 '[[reserved_at]] < :time - [[ttr]] and [[reserved_at]] is not null and [[done_at]] is null',
+                null,
                 [':time' => $this->reserveTime]
             )->execute();
         }
