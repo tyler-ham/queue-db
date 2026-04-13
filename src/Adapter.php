@@ -10,7 +10,7 @@ use Yiisoft\Queue\Cli\LoopInterface;
 use Yiisoft\Queue\JobStatus;
 use Yiisoft\Queue\Message\MessageInterface;
 use Yiisoft\Queue\Message\MessageSerializerInterface;
-use Yiisoft\Queue\QueueFactory;
+use Yiisoft\Queue\Provider\QueueProviderInterface;
 use Yiisoft\Queue\Message\IdEnvelope;
 use Yiisoft\Db\Connection\ConnectionInterface;
 use Yiisoft\Db\Query\Query;
@@ -41,7 +41,7 @@ final class Adapter implements AdapterInterface
         private MessageSerializerInterface $serializer,
         private LoopInterface $loop,
         private MutexFactoryInterface $mutexFactory,
-        private string $channel = QueueFactory::DEFAULT_CHANNEL_NAME,
+        private string $channel = QueueProviderInterface::DEFAULT_QUEUE,
     ) {
         $this->mutex = $this->mutexFactory->create(self::class . $this->channel);
     }
