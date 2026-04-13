@@ -7,7 +7,7 @@ namespace Yiisoft\Queue\Db;
 use InvalidArgumentException;
 use Yiisoft\Queue\Adapter\AdapterInterface;
 use Yiisoft\Queue\Cli\LoopInterface;
-use Yiisoft\Queue\Enum\JobStatus;
+use Yiisoft\Queue\JobStatus;
 use Yiisoft\Queue\Message\MessageInterface;
 use Yiisoft\Queue\Message\MessageSerializerInterface;
 use Yiisoft\Queue\QueueFactory;
